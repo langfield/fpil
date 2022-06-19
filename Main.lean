@@ -1,13 +1,32 @@
 import Fpil
 
+
 -- Section 1.1
+
 #eval 42 + 19 -- 61 : Nat
 #eval String.append "A" (String.append "B" "C") -- "ABC" : String
 #eval String.append (String.append "A" "B") "C" -- "ABC" : String
 #eval if 3 == 3 then 5 else 7 -- 5 : Nat
 #eval if 3 == 4 then "equal" else "not equal" -- "not equal" : String
 
--- Section 1.2
+
+-- Section 1.3
+
+def joinStringsWith (sep : String) (a : String) (b : String) : String :=
+  a ++ sep ++ b
+
+#check joinStringsWith                          -- String → String → String → String
+#eval joinStringsWith " " "a" "b"               -- "a b"
+#eval joinStringsWith ", " "one" "and another"  -- "one, and another"
+#check joinStringsWith ", "                     -- String → String → String
+
+def vol (x : Nat) (y : Nat) (z : Nat) : Nat := x * y * z
+
+#eval vol 1 2 3 -- 6
+
+
+-- Section 1.4
+
 structure RectangularPrism where
   height : Float
   width : Float
